@@ -73,7 +73,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         
         elif path == 'info':
             database_url = os.environ.get('DATABASE_URL', 'NOT_SET')
-            all_env_keys = list(os.environ.keys())
+            all_env_vars = dict(os.environ)
             
             # Get connection parameters
             conn = get_db_connection()
@@ -87,7 +87,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                 'body': json.dumps({
                     'endpoint': '/info',
                     'db_url': database_url,
-                    'env_keys': all_env_keys,
+                    'env_vars': all_env_vars,
                     'connection_params': conn_info
                 })
             }

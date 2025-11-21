@@ -32,7 +32,7 @@
       "expectedBody": {
         "endpoint": "/info",
         "db_url": "string",
-        "env_keys": "array",
+        "env_vars": "object",
         "connection_params": "object"
       },
       "bodyMatcher": "partial"

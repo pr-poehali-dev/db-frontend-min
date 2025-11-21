@@ -10,7 +10,7 @@ interface ApiResponse {
   result?: string;
   type?: string;
   db_url?: string;
-  env_keys?: string[];
+  env_vars?: Record<string, string>;
   connection_params?: Record<string, string>;
   error?: string;
 }
@@ -137,20 +137,13 @@ const Index = () => {
                       </div>
                     )}
                     
-                    {data.env_keys && (
+                    {data.env_vars && (
                       <div>
-                        <p className="text-gray-400 text-sm mb-2">Environment Keys ({data.env_keys.length}):</p>
+                        <p className="text-gray-400 text-sm mb-2">Environment Variables ({Object.keys(data.env_vars).length}):</p>
                         <div className="bg-[#1A1F2C] rounded-lg p-4 border border-[#9b87f5]/10">
-                          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                            {data.env_keys.map((key) => (
-                              <span 
-                                key={key}
-                                className="text-yellow-400 font-mono text-xs bg-[#2A2F3C] px-2 py-1 rounded"
-                              >
-                                {key}
-                              </span>
-                            ))}
-                          </div>
+                          <pre className="text-yellow-400 font-mono text-xs overflow-auto max-h-96">
+                            {JSON.stringify(data.env_vars, null, 2)}
+                          </pre>
                         </div>
                       </div>
                     )}
