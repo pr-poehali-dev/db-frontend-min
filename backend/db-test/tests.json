@@ -1,0 +1,41 @@
+{
+  "tests": [
+    {
+      "name": "Test connection endpoint",
+      "method": "GET",
+      "path": "/?path=conn",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "endpoint": "/conn",
+        "result": "string",
+        "type": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test cursor endpoint",
+      "method": "GET",
+      "path": "/?path=cursor",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "endpoint": "/cursor",
+        "result": "string",
+        "type": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test info endpoint",
+      "method": "GET",
+      "path": "/?path=info",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "endpoint": "/info",
+        "db_url": "string",
+        "env_keys": "array",
+        "connection_params": "object"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
